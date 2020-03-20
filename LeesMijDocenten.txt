@@ -1,0 +1,15 @@
+Deze opdracht heb ik voornamelijk thuis gemaakt tijdens de vakantie, vanaf daar heb ik gecommit en gepushed
+Wanneer ik op school hiermee verder ging, ging er iets totaal mis. Ik kreeg heel veel error 404 op repositories in Github
+en Gitkraken. 
+
+en vanwege "stomme" redenen zijn mijn repository met de commits verwijderd. 
+Nu snap ik dat ik dat niet terug kan halen etc
+
+Ik heb wel gecommit al, als jullie op Github kijken er iets anders staat. Wonderlijk genoeg kon ik ze terug vinden op GITKraken !
+
+Daarom als u in de map public/img kijken, daar heb ik verschillende images staan de commits als een screenshot.
+Dan heb ik toch een soort van 'bewijs' dat dit toch geprobeerd en gedaan heb.
+
+Hopelijk verduidelijkt dit iets
+
+Mvg, Sander 

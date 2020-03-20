@@ -7,3 +7,5 @@ require(ROOT . "core/route.php");
 require(ROOT . "core/core.php");
 
 route();
+
+//returned een parent directory's path. en creërt een absolute path
