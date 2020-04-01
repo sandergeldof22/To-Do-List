@@ -1,49 +1,41 @@
 <?php
 
 require(ROOT . "model/LijstenModel.php");
-//laad de model van de Lijsten in
 
 function index(){
 	$lijsten = getAllLijsten();
 	render('lijsten/index', $lijsten);
-}
-//rendert de index pagina van de lijsten en haalt alle lijsten op en geeft deze mee 
+} //roepts met een functie alle lijsten op en geeft dit mee aan de index
 
 function createlijst(){
 	$taken = getAllTaken();
 	render('lijsten/createlijst', array("taken"=> $taken));
-}
-//rendert de creer pagina voor lijsten en geeft alle taken mee om uit te kunnen kiezen
+} //roepts met een functie alle taken op en geeft dit mee aan de create pagina
 
 function store(){
 	createNewLijst();
 	header('Location: index');
-}
-//stored de ingevulde gegevens en laad daarna de index pagina om het resultaat te kunnen zien
+} //met een functie stoppen ze alle ingevulde informatie in naar de database
 
 function updateLijst($id){
 	$updatelijst = getLijst($id);
 	$taken = getAllTaken();
 	render('lijsten/updatelijst', array("lijsten"=> $updatelijst, "taken"=> $taken));
-}
-//rendert de update pagina van de lijsten, deze geven ook alle taken mee om uit te kunnen kiezen, en update de lijst gebasseerd op het id dat was meegegeven
+} //roepts met een functie alle lijsten en taken op en geeft dit mee aan de update pagina
 
 function editlijst(){
 	$id = $_POST["id"];
 	updateALijst($id);
 	header('Location: index');
-}
-//update een van de lijsten gebasseerd op het id dat oorspronkelijk was meegegeven en gelijk staat aan de data in de database. update deze en render daarna de index pagina om het resultaat te zien
+} //update de ingevulde informatie en add dit in de database, Daarna gaan we terug naar de index pagina
 
 function deletelijst($id){
 	$deletelijst = getLijst($id);
 	render('lijsten/deletelijst', array("lijsten"=> $deletelijst));
-}
-//haalt het ID en andere data van een specifieke row uit de database en rendert dan de verwijder pagina met de data en id van deze specifieke row uit de database
+} //haalt een specifieke lijst op en geeft deze mee aan de delete pagina
 
 function destroylijst(){
 	$id = $_POST["id"];
 	deleteALijst($id);
 	header('Location: index');
-}
-//met het gegeven ID verwijdert de functie de data met deze id en rendert dan de index pagina om het resultaat te zien.
+} // haalt een specifieke id op van een lijst en verwijderd deze uit de database, vervolgens gaat hij terug naar de index pagina
