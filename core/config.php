@@ -1,5 +1,9 @@
 <?php
 
+/*
+Hier staan de configuratie instellingen voor het connecten met de database, de url en de controller
+*/
+
 // Database instellingen
 define('DB_TYPE', 'mysql');		// Wat voor type database gebruik je?
 define('DB_HOST', '127.0.0.1'); // Wat is het IP adres van de server (127.0.0.1 is de lokale machine)

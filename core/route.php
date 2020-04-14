@@ -1,5 +1,8 @@
 <?php
-// Met de route functie wordt bepaald welke controller en welke action er moet worden ingeladen
+
+/*
+Met de route functie wordt bepaald welke controller en welke action er moet worden ingeladen
+*/
 function route()
 {
 	// Hier wordt de functie aangeroepen die de URL op splitst op het standaard seperatie teken (in PHP is dit een /)
@@ -34,7 +37,9 @@ function route()
 		call_user_func('error_404');
 	}
 }
-
+/*
+Met deze functie worden de url's gegenereerd en teruggegeven aan de functie
+*/
 function splitUrl()
 {
 	if (isset($_GET['url'])) {

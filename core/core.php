@@ -1,6 +1,9 @@
 <?php
 
-// Functie om een database verbinding op te zetten. Hij geeft het database object terug
+
+/*
+Functie om een database verbinding op te zetten. Hij geeft het database object terug
+*/
 function openDatabaseConnection() 
 {
 	$options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
@@ -10,9 +13,11 @@ function openDatabaseConnection()
 	return $db;
 }
 
+/*
+De render functie ontvangt het gevraagde bestandsnaam en heeft een data array als niet verplichte variabele
+Daarna worden er 3 bestanden ingeladen. De templates/header.php, jouw gewenste pagina en de templates/footer.php.
+*/
 
-// De render functie ontvangt het gevraagde bestandsnaam en heeft een data array als niet verplichte variabele
-// Daarna worden er 3 bestanden ingeladen. De templates/header.php, jouw gewenste pagina en de templates/footer.php.
 function render($filename, $data = null)
 {
 	if ($data) {

@@ -1,5 +1,9 @@
 <?php
 
+/*
+//met deze functie wordt de database geopend, selecteert hij alles van Lijsten, prepareert en executeerd de statement, Daarna haalt hij
+// alle data op
+*/
 function getAllLijsten(){
 
 	$db = openDatabaseConnection();
@@ -10,9 +14,10 @@ function getAllLijsten(){
 
 	$db = null;
 	return $query->fetchAll();
-} //met deze functie wordt de database geopend, selecteert hij alles van Lijsten, prepareert en executeerd de statement, Daarna haalt hij
-// alle data op
-
+} 
+/*
+met deze functie wordt de database geopend, selecteert hij een specifieke lijst, gebasseerd op ID. Deze prepareert hij en executeert hij waarop hij daarna de resultaten ophaalt en teruggeeft
+*/
 function getLijst($id){
 	$conn = openDatabaseConnection();
 	$stmt = $conn->prepare("SELECT * FROM Lijsten WHERE id = :id");
@@ -20,9 +25,11 @@ function getLijst($id){
 	$stmt->execute();
 	$result = $stmt->fetch();
 	return $result;
-} //met deze functie wordt de database geopend, selecteert hij een specifieke lijst, gebasseerd op ID. Deze prepareert hij en executeert hij
-//waarop hij daarna de resultaten ophaalt en teruggeeft
-
+} 
+/*
+met deze functie wordt een nieuwe lijst gecreeerd. Nadat er gesubmit is, pakt hij de ingevulde informatie en stopt deze in variabelen,
+deze veriabelen worden ingevuld in een statement die uiteindelijk geprepareerd en geexucuteerd wordt. Indien dit niet gaat, krijg je een error
+*/
 function createNewLijst(){
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$naam = $_POST["naam"];
@@ -46,9 +53,11 @@ function createNewLijst(){
 	}
 		$conn = null;
 	}
-}//met deze functie wordt een nieuwe lijst gecreeerd. Nadat er gesubmit is, pakt hij de ingevulde informatie en stopt deze in variabelen,
-//deze veriabelen worden ingevuld in een statement die uiteindelijk geprepareerd en geexucuteerd wordt. Indien dit niet gaat, krijg je een error
-
+}
+/*
+met deze functie wordt de database geopend, selecteert hij alles van Taken, prepareert en executeerd de statement, Daarna haalt hij
+ alle data op
+*/
 function getAllTaken(){
 
 	$db = openDatabaseConnection();
@@ -59,9 +68,11 @@ function getAllTaken(){
 
 	$db = null;
 	return $query->fetchAll();
-} //met deze functie wordt de database geopend, selecteert hij alles van Taken, prepareert en executeerd de statement, Daarna haalt hij
-// alle data op
-
+} 
+/*
+met deze functie wordt een lijst geupdate. Nadat er gesubmit is, pakt hij de ingevulde informatie en stopt deze in variabelen,
+deze veriabelen worden ingevuld in een statement die uiteindelijk geprepareerd en geexucuteerd wordt. Indien dit niet gaat, krijg je een error
+*/
 function updateALijst($id){
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		$id = $_POST["id"];
@@ -86,9 +97,10 @@ function updateALijst($id){
 	}
 	$conn = null;
 	}
-} //met deze functie wordt een lijst geupdate. Nadat er gesubmit is, pakt hij de ingevulde informatie en stopt deze in variabelen,
-//deze veriabelen worden ingevuld in een statement die uiteindelijk geprepareerd en geexucuteerd wordt. Indien dit niet gaat, krijg je een error
-
+} 
+/*
+met deze functie wordt een lijst gedelete, Hij opent de database connectie, zoekt een lijst gebasseerd op een specifieke ID en prepareert en executeerd deze statement, indien dit niet gaat, krijg je een error melding
+*/
 function deleteALijst($id){
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -103,5 +115,5 @@ function deleteALijst($id){
 	}
 	$conn = null;
 	}
-}// met deze functie wordt een lijst gedelete, Hij opent de database connectie, zoekt een lijst gebasseerd op een specifieke ID en prepareert en executeerd deze statement, indien dit niet gaat, krijg je een error melding
+}
 
