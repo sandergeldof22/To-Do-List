@@ -1,3 +1,7 @@
+<?php
+include "header.php";
+?>
+
 <div>
 	<div class="col-sm-12">
 	<h1 class="createtaak-titel">Voeg een nieuwe lijst toe !</h1>
@@ -47,3 +51,6 @@
 	</form>
 </div>
 </div>
+<?php
+include "footer.php";
+?>

@@ -1,3 +1,7 @@
+<?php
+include "header.php";
+?>
+
 <div>
 	<div class="col-sm-12">
 	<h1 class="updatetaak-title">Update Taak</h1>
@@ -24,3 +28,6 @@
 	</form>
 </div>
 </div>
+<?php
+include "footer.php";
+?>

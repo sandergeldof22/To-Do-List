@@ -1,3 +1,7 @@
+<?php
+include "header.php";
+?>
+
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="lijsten-text">
@@ -40,3 +44,6 @@
 			<a id="create-link" href="createlijst.php">klik om een nieuwe lijst toe te voegen !</a>
 		</div>
 	</div>
+<?php
+include "footer.php";
+?>

@@ -1,3 +1,7 @@
+<?php
+include "header.php";
+?>
+
 	<div class="row">
 		<div class="col-sm-12">
 			<h1>Welkom bij uw takenlijst</h1>
@@ -15,3 +19,6 @@
 			<a class="start-link" href="taken.php">Zie hier uw Taken</a>
 		</div>
 	</div>
+<?php
+include "footer.php";
+?>

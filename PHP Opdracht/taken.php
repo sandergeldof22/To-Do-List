@@ -1,3 +1,7 @@
+<?php
+include "header.php";
+?>
+
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="takenlijst-text">
@@ -40,3 +44,6 @@
 			<a id="createtaak-link" href="createtaak.php">klik om een nieuwe taak toe te voegen !</a>
 		</div>
 	</div>
+<?php
+include "footer.php";
+?>

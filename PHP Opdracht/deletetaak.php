@@ -1,3 +1,7 @@
+<?php
+include "header.php";
+?>
+
 <div>
 	<div class="col-sm-12">
 	<h1 class="deletetaak-titel">Verwijder Taak</h1>
@@ -8,3 +12,6 @@
 	</form>
 </div>
 </div>
+<?php
+include "footer.php";
+?>
