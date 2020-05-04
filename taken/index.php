@@ -24,8 +24,8 @@
 						<td><?php echo $row["beschrijving"]?></td>
 						<td><?php echo $row["status"]?></td>
 						<td><?php echo $row["duur"]?></td>
-						<td><a href="updatetaak.php id=<?php echo $row['id'] ?>">Aanpassen</td>
-						<td><a href="deletetaak.php id=<?php echo $row['id'] ?>">Verwijderen</a></td>
+						<td><a href="<?=URL?>taken/updatetaak/<?php echo $row['id'] ?>">Aanpassen</td>
+						<td><a href="<?=URL?>taken/deletetaak/<?php echo $row['id'] ?>">Verwijderen</a></td>
 					</tr>
 					<?php
 					}
@@ -37,6 +37,6 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<h4>Voeg een nieuwe taak toe:</h4>
-			<a id="createtaak-link" href="createtaak.php">klik om een nieuwe taak toe te voegen !</a>
+			<a id="createtaak-link" href="<?=URL?>taken/createtaak">klik om een nieuwe taak toe te voegen !</a>
 		</div>
 	</div>

@@ -7,11 +7,11 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<a class="start-link" href="<?=URL?>lijsten/index">Zie hier uw Lijst</a>
+			<a class="start-link" href="lijsten.php">Zie hier uw Lijst</a>
 		</div>	
 	</div>	
 	<div class="row">
 		<div class="col-sm-12">
-			<a class="start-link" href="<?=URL?>taken/index">Zie hier uw Taken</a>
+			<a class="start-link" href="taken.php">Zie hier uw Taken</a>
 		</div>
 	</div>

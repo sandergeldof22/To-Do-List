@@ -24,8 +24,8 @@
 						<td><?php echo $row["taak_1"]?></td>
 						<td><?php echo $row["taak_2"]?></td>
 						<td><?php echo $row["taak_3"]?></td>
-						<td><a href="updatelijst.php id=<?php echo $row['id'] ?>">Aanpassen</td>
-						<td><a href="deletelijst.php id=<?php echo $row['id'] ?>">Verwijderen</a></td>
+						<td><a href="<?=URL?>lijsten/updatelijst/<?php echo $row['id'] ?>">Aanpassen</td>
+						<td><a href="<?=URL?>lijsten/deletelijst/<?php echo $row['id'] ?>">Verwijderen</a></td>
 					</tr>
 					<?php
 					}
@@ -37,6 +37,6 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<h4>Voeg een nieuwe lijst toe:</h4>
-			<a id="create-link" href="createlijst.php">klik om een nieuwe lijst toe te voegen !</a>
+			<a id="create-link" href="<?=URL?>lijsten/createlijst">klik om een nieuwe lijst toe te voegen !</a>
 		</div>
 	</div>
