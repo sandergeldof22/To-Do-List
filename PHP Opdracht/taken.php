@@ -1,6 +1,9 @@
 <?php
-include "header.php";
+include "Templates/header.php";
 include "DBconnection.php";
+
+
+$data = getAllTaken();
 ?>
 
 	<div class="row">
@@ -46,5 +49,5 @@ include "DBconnection.php";
 		</div>
 	</div>
 <?php
-include "footer.php";
+include "Templates/footer.php";
 ?>

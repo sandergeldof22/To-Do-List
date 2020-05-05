@@ -1,6 +1,5 @@
 <?php
-include "header.php";
-include "DBconnection.php";
+include "Templates/header.php";
 ?>
 
 	<div class="row">
@@ -21,5 +20,5 @@ include "DBconnection.php";
 		</div>
 	</div>
 <?php
-include "footer.php";
+include "Templates/footer.php";
 ?>

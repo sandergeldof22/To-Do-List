@@ -1,12 +1,13 @@
 <?php
-include "header.php";
+include "Templates/header.php";
 include "DBconnection.php";
+
 ?>
 
 <div>
 	<div class="col-sm-12">
 	<h1 class="createtaak-titel">Voeg een nieuwe taak toe !</h1>
-	<form name="createtaak" method="post" action="store">
+	<form name="createtaak" method="post" action="<?php createNewTaak() ?>">
 		<div class="taak-group">
 			Naam:
 			<input type="text" class="inputtask" name="naam" size="100" class="taak-form" value="<?php $naam ?>">
@@ -29,5 +30,5 @@ include "DBconnection.php";
 </div>
 </div>
 <?php
-include "footer.php";
+include "Templates/footer.php";
 ?>
