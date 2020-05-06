@@ -3,6 +3,7 @@ include "Templates/header.php";
 include "DBconnection.php";
 
 $taken = getTaak($id);
+var_dump($taken);
 ?>
 
 <div>
