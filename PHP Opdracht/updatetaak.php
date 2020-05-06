@@ -1,12 +1,14 @@
 <?php
 include "Templates/header.php";
 include "DBconnection.php";
+
+$taken = getTaak($id);
 ?>
 
 <div>
 	<div class="col-sm-12">
 	<h1 class="updatetaak-title">Update Taak</h1>
-	<form name="updatetaak" method="post" action="../edittaak">
+	<form name="updatetaak" method="post" action="<?php updateATaak($id) ?>">
 		<input type="hidden" name="id" value="<?=$taken["id"] ?>">
 		<div class="taak-group">
 			Naam:

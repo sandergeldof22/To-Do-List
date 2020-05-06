@@ -32,8 +32,8 @@ $data = getAllTaken();
 						<td><?php echo $row["beschrijving"]?></td>
 						<td><?php echo $row["status"]?></td>
 						<td><?php echo $row["duur"]?></td>
-						<td><a href="updatetaak.php id=<?php echo $row['id'] ?>">Aanpassen</td>
-						<td><a href="deletetaak.php id=<?php echo $row['id'] ?>">Verwijderen</a></td>
+						<td><a href="updatetaak.php?id=<?php echo $row['id'] ?>">Aanpassen</td>
+						<td><a href="deletetaak.php?id=<?php echo $row['id'] ?>">Verwijderen</a></td>
 					</tr>
 					<?php
 					}
