@@ -164,7 +164,7 @@ function createNewLijst(){
 		$stmt->bindParam(":taak_2", $taak_2);
 		$stmt->bindParam(":taak_3", $taak_3);
 		$stmt->execute();
-		header("Location: taken.php");		
+		header("Location: lijsten.php");		
 	}
 
 	catch(PDOException $e){
@@ -195,7 +195,7 @@ function updateALijst($id){
 		$stmt->bindParam(":taak_2", $taak_2);
 		$stmt->bindParam(":taak_3", $taak_3);		
 		$stmt->execute();
-		header('Location: index');
+		header('Location: lijsten.php');
 	}
 	catch(PDOException $e){
 		echo "Connection failed: " . $e->getMessage();
@@ -214,6 +214,7 @@ function deleteALijst($id){
 		$stmt = $conn->prepare("DELETE FROM Lijsten WHERE id = :id");
 		$stmt->bindParam("id", $id);
 		$stmt->execute();
+		header('Location: lijsten.php');
 	}
 	catch(PDOException $e){
 		echo "Connection failed: " . $e->getMessage();

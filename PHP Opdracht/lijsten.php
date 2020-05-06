@@ -31,8 +31,8 @@ $data = getAllLijsten();
 						<td><?php echo $row["taak_1"]?></td>
 						<td><?php echo $row["taak_2"]?></td>
 						<td><?php echo $row["taak_3"]?></td>
-						<td><a href="updatelijst.php id=<?php echo $row['id'] ?>">Aanpassen</td>
-						<td><a href="deletelijst.php id=<?php echo $row['id'] ?>">Verwijderen</a></td>
+						<td><a href="updatelijst.php?id=<?php echo $row['id'] ?>">Aanpassen</td>
+						<td><a href="deletelijst.php?id=<?php echo $row['id'] ?>">Verwijderen</a></td>
 					</tr>
 					<?php
 					}
