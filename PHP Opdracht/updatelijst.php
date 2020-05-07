@@ -2,6 +2,8 @@
 include "Templates/header.php";
 include "DBconnection.php";
 
+
+$lijsten = getLijst($id);
 $data = getAllTaken();
 ?>
 

@@ -1,6 +1,8 @@
 <?php
 include "Templates/header.php";
 include "DBconnection.php";
+
+$lijsten = getLijst($id);
 ?>
 
 <div>

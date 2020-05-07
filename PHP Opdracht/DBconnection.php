@@ -101,13 +101,14 @@ function updateATaak($id){
 //deze veriabelen worden ingevuld in een statement die uiteindelijk geprepareerd en geexucuteerd wordt. Indien dit niet gaat, krijg je een error
 
 function deleteATaak($id){
+	$id = $_GET['id'];
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		try{
 			$conn = openDatabaseConnection();
 			$stmt = $conn->prepare("DELETE FROM Taken WHERE id = :id");
 			$stmt->bindParam("id", $id);
 			$stmt->execute();
-			// header('Location: taken.php');
+			header('Location: taken.php');
 		}
 		catch(PDOException $e){
 			echo "Connection failed: " . $e->getMessage();
@@ -135,6 +136,7 @@ function getAllLijsten(){
 met deze functie wordt de database geopend, selecteert hij een specifieke lijst, gebasseerd op ID. Deze prepareert hij en executeert hij waarop hij daarna de resultaten ophaalt en teruggeeft
 */
 function getLijst($id){
+	$id = $_GET['id'];
 	$conn = openDatabaseConnection();
 	$stmt = $conn->prepare("SELECT * FROM Lijsten WHERE id = :id");
 	$stmt->bindParam(":id", $id);
@@ -204,8 +206,8 @@ function updateALijst($id){
 met deze functie wordt een lijst gedelete, Hij opent de database connectie, zoekt een lijst gebasseerd op een specifieke ID en prepareert en executeerd deze statement, indien dit niet gaat, krijg je een error melding
 */
 function deleteALijst($id){
+	$id = $_GET['id'];
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-
 	try{
 		$conn = openDatabaseConnection();
 		$stmt = $conn->prepare("DELETE FROM Lijsten WHERE id = :id");
