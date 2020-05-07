@@ -32,19 +32,16 @@ function getAllTaken(){
 // alle data op
 
 function getTaak($id){
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {	
+	
+	$id = $_GET['id'];
 	$conn = openDatabaseConnection();
 	$stmt = $conn->prepare("SELECT * FROM Taken WHERE id = :id");
 	$stmt->bindParam(":id", $id);
 	$stmt->execute();
+
 	$conn = null;
 
 	return $stmt->fetch();
-	// var_dump($stmt);
-	// $result = $stmt->fetch();
-	// var_dump($result);
-	// return $result;
-// }
 } //met deze functie wordt de database geopend, selecteert hij een specifieke taak, gebasseerd op ID. Deze prepareert hij en executeert hij
 //waarop hij daarna de resultaten ophaalt en teruggeeft
 
@@ -110,7 +107,7 @@ function deleteATaak($id){
 			$stmt = $conn->prepare("DELETE FROM Taken WHERE id = :id");
 			$stmt->bindParam("id", $id);
 			$stmt->execute();
-			header('Location: taken.php');
+			// header('Location: taken.php');
 		}
 		catch(PDOException $e){
 			echo "Connection failed: " . $e->getMessage();
