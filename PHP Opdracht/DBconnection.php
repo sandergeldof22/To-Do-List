@@ -9,9 +9,9 @@ function openDatabaseConnection(){
 
 	try {
     	$conn = new PDO("mysql:host=$servername;dbname=To-Do-List", $username, $password); //hij probeert een nieuwe connectie te openen met PDO
-    	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
     	return $conn;
-    }
+    } //als bovenstaande code werkt, dan returnt hij de connectie anders krijg je een errormelding
 	catch(PDOException $e){
     	echo "Connection failed: " . $e->getMessage();
     	}
@@ -51,52 +51,52 @@ function createNewTaak(){
 	$status = $_POST["status"];
 	$duur = $_POST["duur"];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	try{
-		$conn = openDatabaseConnection();
-		$stmt = $conn->prepare("INSERT INTO Taken (naam, beschrijving, status, duur) VALUES (:naam,:beschrijving,:status,:duur)");
-		$stmt->bindParam(":naam", $naam);
-		$stmt->bindParam(":beschrijving", $beschrijving);
-		$stmt->bindParam(":status", $status);
-		$stmt->bindParam(":duur", $duur);	
-		$stmt->execute();
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		try{
+			$conn = openDatabaseConnection();
+			$stmt = $conn->prepare("INSERT INTO Taken (naam, beschrijving, status, duur) VALUES (:naam,:beschrijving,:status,:duur)");
+			$stmt->bindParam(":naam", $naam);
+			$stmt->bindParam(":beschrijving", $beschrijving);
+			$stmt->bindParam(":status", $status);
+			$stmt->bindParam(":duur", $duur);	
+			$stmt->execute();
 
-		header("Location: taken.php");
-	}
+			header("Location: taken.php");
+		}
 
-	catch(PDOException $e){
+			catch(PDOException $e){
 
-		echo "Connection failed: " . $e->getMessage();
-	}
-	$conn = null;
-	}
+				echo "Connection failed: " . $e->getMessage();
+			}
+			$conn = null;
+		}
 } //met deze functie wordt een nieuwe taak gecreeerd. Nadat er gesubmit is, pakt hij de ingevulde informatie en stopt deze in variabelen,
 //deze veriabelen worden ingevuld in een statement die uiteindelijk geprepareerd en geexucuteerd wordt. Indien dit niet gaat, krijg je een error
 
 function updateATaak($id){
-		$id = $_POST["id"];
-		$naam = $_POST["naam"];
-		$beschrijving = $_POST["beschrijving"];
-		$status = $_POST["status"];
-		$duur = $_POST["duur"];
+	$id = $_POST["id"];
+	$naam = $_POST["naam"];
+	$beschrijving = $_POST["beschrijving"];
+	$status = $_POST["status"];
+	$duur = $_POST["duur"];
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
-	try{
-		$conn = openDatabaseConnection();	
-		$stmt = $conn->prepare("UPDATE Taken SET naam = :naam, beschrijving = :beschrijving, status = :status, duur = :duur WHERE id = :id");
-		$stmt->bindParam(":id", $id);
-		$stmt->bindParam(":naam", $naam);
-		$stmt->bindParam(":beschrijving", $beschrijving);
-		$stmt->bindParam(":status", $status);
-		$stmt->bindParam(":duur", $duur);		
-		$stmt->execute();
-		header('Location: taken.php');
-	}
-	catch(PDOException $e){
-		echo "Connection failed: " . $e->getMessage();
-	}
-	$conn = null;
-	}
+		try{
+			$conn = openDatabaseConnection();	
+			$stmt = $conn->prepare("UPDATE Taken SET naam = :naam, beschrijving = :beschrijving, status = :status, duur = :duur WHERE id = :id");
+			$stmt->bindParam(":id", $id);
+			$stmt->bindParam(":naam", $naam);
+			$stmt->bindParam(":beschrijving", $beschrijving);
+			$stmt->bindParam(":status", $status);
+			$stmt->bindParam(":duur", $duur);		
+			$stmt->execute();
+			header('Location: taken.php');
+		} 
+			catch(PDOException $e){
+				echo "Connection failed: " . $e->getMessage();
+			}
+			$conn = null;
+		}
 } //met deze functie wordt een taak geupdate. Nadat er gesubmit is, pakt hij de ingevulde informatie en stopt deze in variabelen,
 //deze veriabelen worden ingevuld in een statement die uiteindelijk geprepareerd en geexucuteerd wordt. Indien dit niet gaat, krijg je een error
 
@@ -208,17 +208,17 @@ met deze functie wordt een lijst gedelete, Hij opent de database connectie, zoek
 function deleteALijst($id){
 	$id = $_GET['id'];
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-	try{
-		$conn = openDatabaseConnection();
-		$stmt = $conn->prepare("DELETE FROM Lijsten WHERE id = :id");
-		$stmt->bindParam("id", $id);
-		$stmt->execute();
-		header('Location: lijsten.php');
-	}
-	catch(PDOException $e){
-		echo "Connection failed: " . $e->getMessage();
-	}
-	$conn = null;
+		try{
+			$conn = openDatabaseConnection();
+			$stmt = $conn->prepare("DELETE FROM Lijsten WHERE id = :id");
+			$stmt->bindParam("id", $id);
+			$stmt->execute();
+			header('Location: lijsten.php');
+		}
+		catch(PDOException $e){
+			echo "Connection failed: " . $e->getMessage();
+		}
+		$conn = null;
 	}
 }
 ?>
