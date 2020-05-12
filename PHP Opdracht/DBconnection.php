@@ -1,5 +1,7 @@
 <?php
 
+//Yavuz: Code ziet er goed uit, Comments zat. ik heb het gezien met en zonder framework en het werkt beide keren dus prima.
+
 function openDatabaseConnection(){
 	$servername = "localhost";
 	$username = "root";
