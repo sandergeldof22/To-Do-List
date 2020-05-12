@@ -3,6 +3,8 @@ include "Templates/header.php";
 include "DBconnection.php";
 
 $data = getAllLijsten();
+$task = getAllTaken();
+// var_dump($task);
 ?>
 
 	<div class="row">
@@ -16,9 +18,13 @@ $data = getAllLijsten();
 					<tr>
 						<th onclick="sortTable(0)">ID</th>
 						<th onclick="sortTable(1)">Naam</th>
-						<th onclick="sortTable(2)">Taak 1</th>
-						<th onclick="sortTable(3)">Taak 2</th>
-						<th onclick="sortTable(4)">Taak 3</th>
+						<?php
+						foreach ($task as $row) {
+						?>	
+						<th onclick="sortTable(2)">Taken</th>
+						<?php
+						}
+						?>
 						<th>Aanpassen</th>
 						<th>Verwijderen</th>
 					</tr>
@@ -28,9 +34,13 @@ $data = getAllLijsten();
 					<tr>
 						<td><?php echo $row["id"]?></td>
 						<td><?php echo $row["naam"]?></td>
-						<td><?php echo $row["taak_1"]?></td>
-						<td><?php echo $row["taak_2"]?></td>
-						<td><?php echo $row["taak_3"]?></td>
+						<?php
+						foreach ($task as $row) {
+						?>	
+						<td><?php echo $row["naam"]?></td>
+						<?php
+						}
+						?>
 						<td><a href="updatelijst.php?id=<?php echo $row['id'] ?>">Aanpassen</td>
 						<td><a href="deletelijst.php?id=<?php echo $row['id'] ?>">Verwijderen</a></td>
 					</tr>

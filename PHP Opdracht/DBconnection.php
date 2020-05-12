@@ -13,7 +13,7 @@ function openDatabaseConnection(){
     	$conn = new PDO("mysql:host=$servername;dbname=To-Do-List", $username, $password); //hij probeert een nieuwe connectie te openen met PDO
     	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
     	return $conn;
-    } //als bovenstaande code werkt, dan returnt hij de connectie anders krijg je een errormelding
+    } //als bovenstaande code werkt, dan returnt hij de connectie, anders krijg je een errormelding
 	catch(PDOException $e){
     	echo "Connection failed: " . $e->getMessage();
     	}
@@ -52,15 +52,17 @@ function createNewTaak(){
 	$beschrijving = $_POST["beschrijving"];
 	$status = $_POST["status"];
 	$duur = $_POST["duur"];
+	$lijst_id = $_POST["lijst_id"];
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		try{
 			$conn = openDatabaseConnection();
-			$stmt = $conn->prepare("INSERT INTO Taken (naam, beschrijving, status, duur) VALUES (:naam,:beschrijving,:status,:duur)");
+			$stmt = $conn->prepare("INSERT INTO Taken (naam, beschrijving, status, duur, lijst_id) VALUES (:naam,:beschrijving,:status,:duur,:lijst_id)");
 			$stmt->bindParam(":naam", $naam);
 			$stmt->bindParam(":beschrijving", $beschrijving);
 			$stmt->bindParam(":status", $status);
 			$stmt->bindParam(":duur", $duur);	
+			$stmt->bindParam(":lijst_id", $lijst_id);
 			$stmt->execute();
 
 			header("Location: taken.php");
@@ -81,16 +83,18 @@ function updateATaak($id){
 	$beschrijving = $_POST["beschrijving"];
 	$status = $_POST["status"];
 	$duur = $_POST["duur"];
+	$lijst_id = $_POST["lijst_id"];
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		try{
 			$conn = openDatabaseConnection();	
-			$stmt = $conn->prepare("UPDATE Taken SET naam = :naam, beschrijving = :beschrijving, status = :status, duur = :duur WHERE id = :id");
+			$stmt = $conn->prepare("UPDATE Taken SET naam = :naam, beschrijving = :beschrijving, status = :status, duur = :duur, lijst_id = :lijst_id WHERE id = :id");
 			$stmt->bindParam(":id", $id);
 			$stmt->bindParam(":naam", $naam);
 			$stmt->bindParam(":beschrijving", $beschrijving);
 			$stmt->bindParam(":status", $status);
-			$stmt->bindParam(":duur", $duur);		
+			$stmt->bindParam(":duur", $duur);	
+			$stmt->bindParam(":lijst_id", $lijst_id);	
 			$stmt->execute();
 			header('Location: taken.php');
 		} 
@@ -153,21 +157,13 @@ deze veriabelen worden ingevuld in een statement die uiteindelijk geprepareerd e
 function createNewLijst(){
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$naam = $_POST["naam"];
-		$taak_1 = $_POST["taak_1"];
-		$taak_2 = $_POST["taak_2"];
-		$taak_3 = $_POST["taak_3"];
-
 	try{
 		$conn = openDatabaseConnection();
-		$stmt = $conn->prepare("INSERT INTO Lijsten (naam, taak_1, taak_2, taak_3) VALUES (:naam,:taak_1,:taak_2,:taak_3)");
+		$stmt = $conn->prepare("INSERT INTO Lijsten (naam) VALUES (:naam)");
 		$stmt->bindParam(":naam", $naam);
-		$stmt->bindParam(":taak_1", $taak_1);
-		$stmt->bindParam(":taak_2", $taak_2);
-		$stmt->bindParam(":taak_3", $taak_3);
 		$stmt->execute();
 		header("Location: lijsten.php");		
 	}
-
 	catch(PDOException $e){
 
 		echo "Connection failed: " . $e->getMessage();

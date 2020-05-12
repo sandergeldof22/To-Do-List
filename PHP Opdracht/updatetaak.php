@@ -3,6 +3,7 @@ include "Templates/header.php";
 include "DBconnection.php";
 
 $taken = getTaak($id);
+$lijsten = getAllLijsten();
 ?>
 
 <div>
@@ -25,6 +26,18 @@ $taken = getTaak($id);
 		<div class="taak-group">
 			Duur (in minuten):
 			<input type="text" name="duur" size="100" class="taak-form" placeholder="<?php echo $taken["duur"];?>" value="<?php $duur ?>">
+		</div>
+		<div class="taak-group">
+			Toevoegen aan Lijst:
+			<select name="lijst_id" value="<?php $lijst_id ?>">
+				<?php
+					foreach($lijsten as $row){
+				?>
+				<option class="Lijstkeuzes" placeholder="<?php echo $row['naam']?>" value="<?php echo $row['naam']?>"><?php echo $row['naam']?></option>
+				<?php
+				}
+				?>
+			</select>
 		</div>
 		<input type="submit" name="submit">
 		<input type="reset" name="reset">
