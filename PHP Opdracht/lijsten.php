@@ -4,7 +4,6 @@ include "DBconnection.php";
 
 $data = getAllLijsten();
 $task = getRelevantTaak();
-var_dump($task);
 ?>
 
 	<div class="row">

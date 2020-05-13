@@ -194,18 +194,12 @@ function updateALijst($id){
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		$id = $_POST["id"];
 		$naam = $_POST["naam"];
-		$taak_1 = $_POST["taak_1"];
-		$taak_2 = $_POST["taak_2"];
-		$taak_3 = $_POST["taak_3"];
 
 	try{
 		$conn = openDatabaseConnection();	
-		$stmt = $conn->prepare("UPDATE Lijsten SET naam = :naam, taak_1 =:taak_1,  taak_2 = :taak_2, taak_3 = :taak_3 WHERE id = :id");
+		$stmt = $conn->prepare("UPDATE Lijsten SET naam = :naam WHERE id = :id");
 		$stmt->bindParam(":id", $id);
-		$stmt->bindParam(":naam", $naam);
-		$stmt->bindParam(":taak_1", $taak_1);
-		$stmt->bindParam(":taak_2", $taak_2);
-		$stmt->bindParam(":taak_3", $taak_3);		
+		$stmt->bindParam(":naam", $naam);		
 		$stmt->execute();
 		header('Location: lijsten.php');
 	}
