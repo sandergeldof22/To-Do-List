@@ -3,8 +3,8 @@ include "Templates/header.php";
 include "DBconnection.php";
 
 $data = getAllLijsten();
-$task = getAllTaken();
-// var_dump($task);
+$task = getRelevantTaak();
+var_dump($task);
 ?>
 
 	<div class="row">
@@ -19,9 +19,9 @@ $task = getAllTaken();
 						<th onclick="sortTable(0)">ID</th>
 						<th onclick="sortTable(1)">Naam</th>
 						<?php
-						foreach ($task as $row) {
+						foreach ($task as $taak) {
 						?>	
-						<th onclick="sortTable(2)">Taken</th>
+							<th onclick="sortTable(2)">Taken</th>
 						<?php
 						}
 						?>
@@ -35,9 +35,9 @@ $task = getAllTaken();
 						<td><?php echo $row["id"]?></td>
 						<td><?php echo $row["naam"]?></td>
 						<?php
-						foreach ($task as $row) {
+						foreach ($task as $taak)  {
 						?>	
-						<td><?php echo $row["naam"]?></td>
+							<td><?php echo $taak['naam']?></td>
 						<?php
 						}
 						?>

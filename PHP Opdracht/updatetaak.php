@@ -33,7 +33,7 @@ $lijsten = getAllLijsten();
 				<?php
 					foreach($lijsten as $row){
 				?>
-				<option class="Lijstkeuzes" placeholder="<?php echo $row['naam']?>" value="<?php echo $row['naam']?>"><?php echo $row['naam']?></option>
+				<option class="Lijstkeuzes" placeholder="<?php echo $row['naam']?>" value="<?php echo $row['id']?>"><?php echo $row['naam']?></option>
 				<?php
 				}
 				?>

@@ -47,6 +47,21 @@ function getTaak($id){
 } //met deze functie wordt de database geopend, selecteert hij een specifieke taak, gebasseerd op ID. Deze prepareert hij en executeert hij
 //waarop hij daarna de resultaten ophaalt en teruggeeft
 
+function getRelevantTaak(){
+
+	$conn = openDatabaseConnection();
+
+	$stmt = $conn->prepare("SELECT naam FROM Taken WHERE lijst_id IN (SELECT id FROM Lijsten)");
+	$stmt->bindParam(":id", $id);
+	$stmt->bindParam(":lijst_id", $lijst_id);
+	$stmt->execute();
+
+	$conn = null;
+
+	return $stmt->fetchAll();
+
+}
+
 function createNewTaak(){
 	$naam = $_POST["naam"];
 	$beschrijving = $_POST["beschrijving"];
