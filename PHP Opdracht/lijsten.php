@@ -4,6 +4,26 @@ include "DBconnection.php";
 
 $data = getAllLijsten();
 $task = getRelevantTaak();
+$count = count($task);
+$array = array();
+
+for ($i = 0; $i <= $count -1; $i++){
+	echo "<br>";
+	$counter = print_r($task[$i][0]);	
+	array_push($array, $task[$i][0]);
+	$values = array_count_values($array);
+}
+
+	arsort($values);
+	var_dump($values);
+	$maxvalue = array_values($values);
+	// print_r($maxvalue);
+	// var_dump($maxvalue);
+	echo "the most common value is: ".$maxvalue[0];
+
+
+
+
 ?>
 
 	<div class="row">
@@ -18,7 +38,7 @@ $task = getRelevantTaak();
 						<th onclick="sortTable(0)">ID</th>
 						<th onclick="sortTable(1)">Naam</th>
 						<?php
-						foreach ($task as $taak) {
+							for ($i = 0; $i <= $maxvalue[0] -1; $i++){
 						?>	
 							<th onclick="sortTable(2)">Taken</th>
 						<?php
@@ -33,11 +53,15 @@ $task = getRelevantTaak();
 					<tr>
 						<td><?php echo $row["id"]?></td>
 						<td><?php echo $row["naam"]?></td>
-						<?php
-						foreach ($task as $taak)  {
+						<?php							
+							for ($i = 0; $i <= $count -1; $i++){
+								$lijst_id = $task[$i]['lijst_id'];	
+								$lijst_name = $task[$i]['naam'];
+								if ($lijst_id == $row["id"]) {
 						?>	
-							<td><?php echo $taak['naam']?></td>
-						<?php
+							<td><?php echo $task[$i]['naam']?></td>
+						<?php					
+							}						
 						}
 						?>
 						<td><a href="updatelijst.php?id=<?php echo $row['id'] ?>">Aanpassen</td>

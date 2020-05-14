@@ -2,6 +2,10 @@
 
 //Yavuz: Code ziet er goed uit, Comments zat. ik heb het gezien met en zonder framework en het werkt beide keren dus prima.
 
+
+/*
+Onderstaande functie opent de Database connectie door middel van PDO
+*/
 function openDatabaseConnection(){
 	$servername = "localhost";
 	$username = "root";
@@ -18,6 +22,10 @@ function openDatabaseConnection(){
     	echo "Connection failed: " . $e->getMessage();
     	}
 }
+/*
+met deze functie wordt de database geopend, selecteert hij alles van Taken, prepareert en executeerd de statement, Daarna haalt hij
+ alle data op
+*/
 
 function getAllTaken(){
 
@@ -30,9 +38,10 @@ function getAllTaken(){
 	$db = null;
 	return $query->fetchAll();
 
-} //met deze functie wordt de database geopend, selecteert hij alles van Taken, prepareert en executeerd de statement, Daarna haalt hij
-// alle data op
-
+} 
+/*met deze functie wordt de database geopend, selecteert hij een specifieke taak, gebasseerd op ID. Deze prepareert hij en executeert hij
+waarop hij daarna de resultaten ophaalt en teruggeeft
+*/
 function getTaak($id){
 	
 	$id = $_GET['id'];
@@ -44,14 +53,17 @@ function getTaak($id){
 	$conn = null;
 
 	return $stmt->fetch();
-} //met deze functie wordt de database geopend, selecteert hij een specifieke taak, gebasseerd op ID. Deze prepareert hij en executeert hij
-//waarop hij daarna de resultaten ophaalt en teruggeeft
+} 
+/*
+Onderstaande functie opent de Database connectie en probeert dan alleen taken te pakken waarvan de ID in Lijsten gelijk staat aan het lijst_id
+(meestal wel) in Taken
+*/
 
 function getRelevantTaak(){
 
 	$conn = openDatabaseConnection();
 
-	$stmt = $conn->prepare("SELECT naam FROM Taken WHERE lijst_id IN (SELECT id FROM Lijsten)");
+	$stmt = $conn->prepare("SELECT lijst_id, naam FROM Taken WHERE lijst_id IN (SELECT id FROM Lijsten)");
 	$stmt->bindParam(":id", $id);
 	$stmt->bindParam(":lijst_id", $lijst_id);
 	$stmt->execute();
@@ -61,6 +73,10 @@ function getRelevantTaak(){
 	return $stmt->fetchAll();
 
 }
+/*
+Onderstaande taak creert een nieuwe taak door alle ingevulde values in de form door te geven aan de query en die deze daarna upload op de database
+Hierna stuurt hij je naar de index pagina van taken. zodat de nieuwe taak zichtbaar is
+*/
 
 function createNewTaak(){
 	$naam = $_POST["naam"];
@@ -89,9 +105,10 @@ function createNewTaak(){
 			}
 			$conn = null;
 		}
-} //met deze functie wordt een nieuwe taak gecreeerd. Nadat er gesubmit is, pakt hij de ingevulde informatie en stopt deze in variabelen,
-//deze veriabelen worden ingevuld in een statement die uiteindelijk geprepareerd en geexucuteerd wordt. Indien dit niet gaat, krijg je een error
-
+} 
+ /*met deze functie wordt een taak geupdate. Nadat er gesubmit is, pakt hij de ingevulde informatie en stopt deze in variabelen,
+deze veriabelen worden ingevuld in een statement die uiteindelijk geprepareerd en geexucuteerd wordt. Indien dit niet gaat, krijg je een error
+*/
 function updateATaak($id){
 	$id = $_POST["id"];
 	$naam = $_POST["naam"];
@@ -118,8 +135,9 @@ function updateATaak($id){
 			}
 			$conn = null;
 		}
-} //met deze functie wordt een taak geupdate. Nadat er gesubmit is, pakt hij de ingevulde informatie en stopt deze in variabelen,
-//deze veriabelen worden ingevuld in een statement die uiteindelijk geprepareerd en geexucuteerd wordt. Indien dit niet gaat, krijg je een error
+}
+/* met deze functie wordt een taak gedelete, Hij opent de database connectie, zoekt een lijst gebasseerd op een specifieke ID en prepareert en executeerd deze statement, indien dit niet gaat, krijg je een error melding
+*/
 
 function deleteATaak($id){
 	$id = $_GET['id'];
@@ -136,7 +154,7 @@ function deleteATaak($id){
 		}
 		$conn = null;
 	}
-} // met deze functie wordt een taak gedelete, Hij opent de database connectie, zoekt een lijst gebasseerd op een specifieke ID en prepareert en executeerd deze statement, indien dit niet gaat, krijg je een error melding
+} 
 
 /*
 //met deze functie wordt de database geopend, selecteert hij alles van Lijsten, prepareert en executeerd de statement, Daarna haalt hij
