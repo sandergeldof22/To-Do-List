@@ -9,13 +9,11 @@ $array = array();
 
 $ids = $task[$i]["lijst_id"];
 
-
 for ($i = 0; $i <= $count -1; $i++){
 	$counter = $task[$i][0];	
 	array_push($array, $task[$i][0]);
 	$values = array_count_values($array);
 }
-
 	arsort($values);
 	$maxvalue = array_values($values);
 ?>
@@ -45,8 +43,8 @@ for ($i = 0; $i <= $count -1; $i++){
 					foreach ($data as $row) {
 					?>
 					<tr>
-						<td class="task-name"><?php echo $row["id"]?></td>
-						<td class="task-name"><?php echo $row["naam"]?></td>
+						<td class="task-name-id"><?php echo $row["id"]?></td>
+						<td class="task-name-name"><?php echo $row["naam"]?></td>
 						<?php //onderstaande code genereert vakjes voor alle taken	
 							for ($i = 0; $i <= $count -1; $i++){
 								$lijst_id = $task[$i]['lijst_id'];	
@@ -54,24 +52,9 @@ for ($i = 0; $i <= $count -1; $i++){
 								if ($lijst_id == $row["id"]) {
 						?>	
 							<td class="task-name"><?php echo $task[$i]['naam']?></td>
-						<?php
-						}					
-						}
-						print_r($maxvalue[0]);
-						print_r($count);//Onderstaande codes zorgen ervoor dat er geen extra lege vakken worden aangemaakt op plekken waar dit niet nodig is, BV: de rij met de meeste taken
-							if ($count !== $maxvalue[0]){ 
-								$diff = $count - $maxvalue[0] +1; 								
-								for ($i = 0; $i <= $diff -1; $i++){
-									if ($lijst_id == $row["id"]){
-										if ($count < $maxvalue[0]){
-						?>
-							<td class="empty-task"></td>
-						<?php
-										}	
-									}
-								}
-							}
-									
+						<?php	
+						}			
+						}		
 						?>
 						<td id="updatelijst"><a href="updatelijst.php?id=<?php echo $row['id'] ?>">Aanpassen</td>
 						<td id="deletelijst"><a href="deletelijst.php?id=<?php echo $row['id'] ?>">Verwijderen</a></td>
