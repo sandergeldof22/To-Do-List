@@ -10,7 +10,6 @@ $array = array();
 $ids = $task[$i]["lijst_id"];
 
 
-
 //onderstaande code pusht alle taken in een array
 for ($i = 0; $i <= $count -1; $i++){
 	$counter = $task[$i][0];	
@@ -19,6 +18,7 @@ for ($i = 0; $i <= $count -1; $i++){
 }
 	arsort($values);
 	$maxvalue = array_values($values);
+	var_dump($counter);
 ?>
 
 	<div class="row">
@@ -29,7 +29,7 @@ for ($i = 0; $i <= $count -1; $i++){
 	</div>	
 	<div class="row">
 		<div class="col-sm-12">
-			<input type="text" id="filter" size="100" onkeyup="Filter()" placeholder="Search..">			
+			<input type="text" id="filterLijst" size="100" onkeyup="FilterLijst()" placeholder="Search..">			
 		</div>	
 	</div>
 	<div class="row">
@@ -70,8 +70,8 @@ for ($i = 0; $i <= $count -1; $i++){
 							}
 						?>
 					</td>
-					<td id="updatelijst"><a href="updatelijst.php?id=<?php echo $row['id'] ?>">Aanpassen</td>
-					<td id="deletelijst"><a href="deletelijst.php?id=<?php echo $row['id'] ?>">Verwijderen</a></td>				
+					<td id="updatelijst"><a href="updatelijst.php?id=<?php echo $data[$i]['id'] ?>">Aanpassen</td>
+					<td id="deletelijst"><a href="deletelijst.php?id=<?php echo $data[$i]['id'] ?>">Verwijderen</a></td>				
 				</tr>
 			<?php
 				}

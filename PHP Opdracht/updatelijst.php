@@ -18,7 +18,7 @@ $lijsten = getLijst($id);
 		<input type="submit" name="submit">
 		<input type="reset" name="reset">
 	</form>
-</div>
+	</div>
 </div>
 <?php
 include "Templates/footer.php";

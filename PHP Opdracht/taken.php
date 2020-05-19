@@ -12,8 +12,8 @@ $data = getAllTaken();
 				<h3>Uw huidige taken:</h3>
 			</div>
 			<div class="takenlijst">
-				<input type="text" id="filter" size="100" onkeyup="Filter()" placeholder="Search..">
-				<table id="table_1"  class="tables" align="center" border="1">
+				<input type="text" id="filterTaak" size="100" onkeyup="FilterTaak()" placeholder="Search..">
+				<table id="table_1"  class="tables" align="center" border="1" data-name="listtable">
 					<tr>
 						<th onclick="sortTable(0)">ID</th>
 						<th onclick="sortTable(1)">Naam</th>
