@@ -45,11 +45,11 @@ for ($i = 0; $i <= $count -1; $i++){
 			<?php
 				for ($i = 0; $i <= $counter -1; $i++){
 			?>
-				<table id="table"  class="tables" align="center" border="1" data-name="mytable">
+				<table id="table" class="tables" align="center" border="1" data-name="listtable">
 				<tr>
-					<th onclick="sortTable(0)">ID</th>
-					<th onclick="sortTable(1)">Naam</th>
-					<th onclick="sortTable(2)">Taken</th>
+					<th>ID</th>
+					<th>Naam</th>
+					<th>Taken</th>
 					<th>Aanpassen</th>
 					<th>Verwijderen</th>
 				</tr>
