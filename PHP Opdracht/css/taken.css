@@ -3,7 +3,7 @@ body{
 }
 
 .container{
-	height: 800px;
+	height: 1200px;
 	margin: 0 auto;
 	margin-top: 30px;
 	background-color: white;
@@ -36,6 +36,10 @@ body{
 	margin-bottom: 10px;
 }
 
+table{
+	vertical-align: middle;
+}
+
 td{
 	padding: 5px;
 }
@@ -47,11 +51,12 @@ th{
 
 tr{
 	padding: 5px;
+	vertical-align: middle;
 }
 
 
 ul li{
-	display: inline;
+	display: inline-block;
 }
 
 
@@ -65,3 +70,6 @@ li a{
 	margin-bottom: 10px;
 }
 
+.tables{
+	margin-top: 20px;
+}
