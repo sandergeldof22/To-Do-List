@@ -9,6 +9,7 @@ $array = array();
 
 $ids = $task[$i]["lijst_id"];
 
+$ID = count($data);
 
 //onderstaande code pusht alle taken in een array
 for ($i = 0; $i <= $count -1; $i++){
@@ -18,7 +19,6 @@ for ($i = 0; $i <= $count -1; $i++){
 }
 	arsort($values);
 	$maxvalue = array_values($values);
-	var_dump($counter);
 ?>
 
 	<div class="row">
@@ -43,7 +43,8 @@ for ($i = 0; $i <= $count -1; $i++){
 		<div class="col-sm-12">
 			<div class="lijstenlijst">
 			<?php
-				for ($i = 0; $i <= $counter -1; $i++){
+				for ($i = 0; $i <= $ID -1; $i++){
+
 			?>
 				<table id="table" class="tables" align="center" border="1" data-name="listtable">
 				<tr>
